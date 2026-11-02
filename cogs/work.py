@@ -13,11 +13,11 @@ from utils.currency import format_currency
 WORK_COLOUR = discord.Colour.from_str("#ff5c35")
 WORK_FOOTER = "NorthBorneo BOT | .gg/rcHJY7y9z5"
 JOB_DESCRIPTIONS = (
-    "You delivered packages across town as a delivery driver.",
-    "You kept the checkout moving during a busy cashier shift.",
-    "You brought in a good catch while working as a fisherman.",
-    "You got a vehicle back on the road during your mechanic shift.",
-    "You harvested a healthy crop while working on the farm.",
+    "You delivered packages across Penang as a delivery driver.",
+    "You kept the checkout moving during a busy cashier shift at Mydin.",
+    "You brought in a good catch while working as a fisherman in Tanjung Malim.",
+    "You got a red axia back on the road during your mechanic shift.",
+    "You harvested a bountiful crop while working on the farm.",
     "You completed a quiet shift keeping the property secure.",
 )
 
