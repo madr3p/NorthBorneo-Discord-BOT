@@ -22,6 +22,7 @@ class NBDiscordBot(commands.Bot):
         await self.load_extension("cogs.daily")
         await self.load_extension("cogs.balance")
         await self.load_extension("cogs.transfer")
+        await self.load_extension("cogs.leaderboard")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -49,7 +50,8 @@ async def help_command(ctx):
             "`.balance [@member]` — Displays a member's economy balances.\n"
             "`.bal [@member]` — Alias of `.balance`.\n"
             "`.deposit <amount>` — Deposit wallet funds into the bank.\n"
-            "`.withdraw <amount>` — Withdraw bank funds into the wallet."
+            "`.withdraw <amount>` — Withdraw bank funds into the wallet.\n"
+            "`.leaderboard` — View the top 10 richest players."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
