@@ -26,6 +26,7 @@ class NBDiscordBot(commands.Bot):
         await self.load_extension("cogs.work")
         await self.load_extension("cogs.crime")
         await self.load_extension("cogs.rob")
+        await self.load_extension("cogs.pay")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -57,7 +58,8 @@ async def help_command(ctx):
             "`.leaderboard` — View the top 10 richest players.\n"
             "`.work` — Work a job to earn NB Ringgit.\n"
             "`.crime` — Attempt a crime for a chance to earn NB Ringgit.\n"
-            "`.rob @member` — Attempt to rob another economy member."
+            "`.rob @member` — Attempt to rob another economy member.\n"
+            "`.pay @member <amount>` — Send NB Ringgit to another member."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
