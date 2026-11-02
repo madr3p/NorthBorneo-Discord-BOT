@@ -129,7 +129,7 @@ class Profile(commands.Cog):
             value=f"<t:{int(profile_member.created_at.timestamp())}:D>",
             inline=True,
         )
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit")
+        embed.set_footer(text="NorthBorneo BOT | .gg/rcHJY7y9z5")
 
         await ctx.send(embed=embed)
 

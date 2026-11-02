@@ -165,7 +165,7 @@ class Transfer(commands.Cog):
             value=format_currency(result["bank_balance"]),
             inline=True,
         )
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit")
+        embed.set_footer(text="NorthBorneo BOT | .gg/rcHJY7y9z5")
         await ctx.send(embed=embed)
 
     @commands.command(name="deposit")

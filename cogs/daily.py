@@ -98,7 +98,7 @@ class Daily(commands.Cog):
                 f"**{_format_remaining(remaining)}**."
             )
 
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit")
+        embed.set_footer(text="NorthBorneo BOT | .gg/rcHJY7y9z5")
         await ctx.send(embed=embed)
 
 
