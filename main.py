@@ -18,6 +18,8 @@ class NBDiscordBot(commands.Bot):
 
     async def setup_hook(self):
         await self.load_extension("cogs.embed")
+        await self.load_extension("cogs.profile")
+        await self.load_extension("cogs.daily")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -36,8 +38,12 @@ async def help_command(ctx):
     embed = discord.Embed(
         title="NorthBorneo BOT — Commands",
         description=(
-            "**.embed -** Opens the embed builder.\n"
-            "**.help -** Displays this command list."
+            "**GENERAL**\n"
+            "`.help` — Displays this command list.\n"
+            "`.embed` — Opens the embed builder.\n\n"
+            "**ECONOMY**\n"
+            "`.profile [@member]` — Displays an economy profile.\n"
+            "`.daily` — Claims your daily NB Ringgit reward."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
