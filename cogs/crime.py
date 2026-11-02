@@ -73,12 +73,13 @@ def _commit_crime_attempt(discord_user_id: int) -> dict:
         raise ValueError("Crime RPC returned an inconsistent status.")
 
     wallet_balance = result.get("wallet_balance_after")
+    bank_balance = result.get("bank_balance_after")
     next_crime_at = result.get("next_crime_at")
     if (
         status in {"success", "failure", "cooldown", "balance_limit_reached"}
-        and wallet_balance is None
+        and (wallet_balance is None or bank_balance is None)
     ):
-        raise ValueError("Crime RPC returned no wallet balance.")
+        raise ValueError("Crime RPC returned incomplete balances.")
     if (
         status in {"success", "failure", "cooldown", "balance_limit_reached"}
         and not next_crime_at
@@ -90,6 +91,7 @@ def _commit_crime_attempt(discord_user_id: int) -> dict:
         "amount_won": int(result["amount_won"]),
         "amount_lost": int(result["amount_lost"]),
         "wallet_balance": int(wallet_balance) if wallet_balance is not None else None,
+        "bank_balance": int(bank_balance) if bank_balance is not None else None,
         "next_crime_at": _parse_timestamp(next_crime_at) if next_crime_at else None,
     }
 
@@ -172,6 +174,11 @@ class Crime(commands.Cog):
         embed.add_field(
             name="Updated Wallet",
             value=format_currency(result["wallet_balance"]),
+            inline=True,
+        )
+        embed.add_field(
+            name="Updated Bank",
+            value=format_currency(result["bank_balance"]),
             inline=True,
         )
         embed.set_footer(text=CRIME_FOOTER)
