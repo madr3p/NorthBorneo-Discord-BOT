@@ -21,6 +21,7 @@ class NBDiscordBot(commands.Bot):
         await self.load_extension("cogs.profile")
         await self.load_extension("cogs.daily")
         await self.load_extension("cogs.balance")
+        await self.load_extension("cogs.transfer")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -46,7 +47,9 @@ async def help_command(ctx):
             "`.profile [@member]` — Displays an economy profile.\n"
             "`.daily` — Claims your daily NB Ringgit reward.\n"
             "`.balance [@member]` — Displays a member's economy balances.\n"
-            "`.bal [@member]` — Alias of `.balance`."
+            "`.bal [@member]` — Alias of `.balance`.\n"
+            "`.deposit <amount>` — Deposit wallet funds into the bank.\n"
+            "`.withdraw <amount>` — Withdraw bank funds into the wallet."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
