@@ -23,6 +23,7 @@ class NBDiscordBot(commands.Bot):
         await self.load_extension("cogs.balance")
         await self.load_extension("cogs.transfer")
         await self.load_extension("cogs.leaderboard")
+        await self.load_extension("cogs.work")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -51,7 +52,8 @@ async def help_command(ctx):
             "`.bal [@member]` — Alias of `.balance`.\n"
             "`.deposit <amount>` — Deposit wallet funds into the bank.\n"
             "`.withdraw <amount>` — Withdraw bank funds into the wallet.\n"
-            "`.leaderboard` — View the top 10 richest players."
+            "`.leaderboard` — View the top 10 richest players.\n"
+            "`.work` — Work a job to earn NB Ringgit."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
