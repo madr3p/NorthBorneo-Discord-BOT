@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 
 from supabase_db import get_supabase_client
+from utils.currency import CURRENCY_EMOJI, format_currency
 
 
 TABLE_NAME = "economy_profiles"
@@ -60,20 +61,20 @@ class Balance(commands.Cog):
         embed.set_thumbnail(url=balance_member.display_avatar.url)
         embed.add_field(
             name="Wallet",
-            value=f"{wallet:,} NBR",
+            value=format_currency(wallet),
             inline=True,
         )
         embed.add_field(
             name="Bank",
-            value=f"{bank:,} NBR",
+            value=format_currency(bank),
             inline=True,
         )
         embed.add_field(
             name="Net Worth",
-            value=f"{wallet + bank:,} NBR",
+            value=format_currency(wallet + bank),
             inline=True,
         )
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit (NBR)")
+        embed.set_footer(text=f"NorthBorneo Economy • NB Ringgit {CURRENCY_EMOJI}")
 
         await ctx.send(embed=embed)
 

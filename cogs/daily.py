@@ -6,6 +6,7 @@ import discord
 from discord.ext import commands
 
 from supabase_db import get_supabase_client
+from utils.currency import CURRENCY_EMOJI, format_currency
 
 
 DAILY_REWARD = 1_500
@@ -75,10 +76,10 @@ class Daily(commands.Cog):
 
         if result["claimed"]:
             embed.title = "Daily Reward Claimed"
-            embed.description = f"You received **{DAILY_REWARD:,} NBR**."
+            embed.description = f"You received **{format_currency(DAILY_REWARD)}**."
             embed.add_field(
                 name="Updated Wallet",
-                value=f"{result['wallet_balance']:,} NBR",
+                value=format_currency(result["wallet_balance"]),
                 inline=True,
             )
         else:
@@ -97,7 +98,7 @@ class Daily(commands.Cog):
                 f"**{_format_remaining(remaining)}**."
             )
 
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit (NBR)")
+        embed.set_footer(text=f"NorthBorneo Economy • NB Ringgit {CURRENCY_EMOJI}")
         await ctx.send(embed=embed)
 
 

@@ -5,6 +5,7 @@ import discord
 from discord.ext import commands
 
 from supabase_db import get_supabase_client
+from utils.currency import CURRENCY_EMOJI, format_currency
 
 
 MAX_BIGINT = 9_223_372_036_854_775_807
@@ -148,20 +149,23 @@ class Transfer(commands.Cog):
         )
         embed = discord.Embed(
             title=f"{direction.title()} Complete",
-            description=f"Transferred **{amount:,} NBR** from {source} to {destination}.",
+            description=(
+                f"Transferred **{format_currency(amount)}** "
+                f"from {source} to {destination}."
+            ),
             colour=EMBED_COLOUR,
         )
         embed.add_field(
             name="Wallet",
-            value=f"{result['wallet_balance']:,} NBR",
+            value=format_currency(result["wallet_balance"]),
             inline=True,
         )
         embed.add_field(
             name="Bank",
-            value=f"{result['bank_balance']:,} NBR",
+            value=format_currency(result["bank_balance"]),
             inline=True,
         )
-        embed.set_footer(text="NorthBorneo Economy • NB Ringgit (NBR)")
+        embed.set_footer(text=f"NorthBorneo Economy • NB Ringgit {CURRENCY_EMOJI}")
         await ctx.send(embed=embed)
 
     @commands.command(name="deposit")
