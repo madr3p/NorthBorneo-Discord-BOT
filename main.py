@@ -65,7 +65,9 @@ async def help_command(ctx):
             "**GAMBLING**\n"
             "`.coinflip <bet> <heads/tails>` — Bet on a coinflip.\n"
             "`.dice <bet> <number>` — Bet on a six-sided dice roll.\n"
-            "`.slots <bet>` — Spin three slot reels."
+            "`.slots <bet>` — Spin three slot reels.\n"
+            "`.blackjack <bet>` — Play Blackjack against the dealer.\n"
+            "`.roulette <bet> <choice>` — Bet on a European roulette spin."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
