@@ -28,6 +28,7 @@ class NBDiscordBot(commands.Bot):
         await self.load_extension("cogs.crime")
         await self.load_extension("cogs.rob")
         await self.load_extension("cogs.pay")
+        await self.load_extension("cogs.gambling")
         await self.tree.sync()
 
         print("Extensions loaded.")
@@ -60,7 +61,11 @@ async def help_command(ctx):
             "`.work` — Work a job to earn NB Ringgit.\n"
             "`.crime` — Attempt a crime for a chance to earn NB Ringgit.\n"
             "`.rob @member` — Attempt to rob another economy member.\n"
-            "`.pay @member <amount>` — Send NB Ringgit to another member."
+            "`.pay @member <amount>` — Send NB Ringgit to another member.\n\n"
+            "**GAMBLING**\n"
+            "`.coinflip <bet> <heads/tails>` — Bet on a coinflip.\n"
+            "`.dice <bet> <number>` — Bet on a six-sided dice roll.\n"
+            "`.slots <bet>` — Spin three slot reels."
         ),
         colour=discord.Colour.from_str("#ff5c35"),
     )
